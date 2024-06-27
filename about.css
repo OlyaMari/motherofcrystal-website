@@ -1,0 +1,27 @@
+/*-- SECTION ABOUT BRAND --*/
+
+/*ABOUT_US*/
+
+article#aboutUs {
+    margin: 0 10% 0 10%;
+}
+
+article#aboutUs section {
+    text-align: justify;
+}
+
+article#aboutUs .marta img {
+    padding-right: 5%;
+    padding-bottom: 3%;
+}
+
+article#aboutUs .olya img {
+    padding-left: 5%;
+    padding-bottom: 3%;
+}
+
+article#aboutUs h3 {
+    text-align: center;
+}
+
+

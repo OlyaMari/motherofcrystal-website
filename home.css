@@ -1,0 +1,163 @@
+/*MAIN BANNER*/
+
+div#banner_container {
+    position: relative;
+}
+
+div#banner_container img, div#home-quote img {
+    width: 100%;
+}
+
+
+.banner-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(images/logo-final-small.png);
+    background-size: contain;
+    width: 450px;
+    height: 80px;
+}
+
+.banner-text h1 {
+    text-transform: uppercase;
+}
+
+.gradient {
+    position: absolute;
+    background-image: url(images/home-slider/gradient.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+
+/*CYTATA*/
+
+div#home-quote {
+    position: relative;
+}
+
+div#home-quote img {
+    opacity: 0.4;
+}
+
+div.quote-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(images/citata.png);
+    background-size: contain;
+    width: 600px;
+    height: 39px;
+}
+
+
+div.home-txt {
+    padding: 0 6%;
+}
+
+div.home-txt p {
+    font-size: 26px;
+    line-height: 1.45;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 50px;
+    text-transform: uppercase;
+}
+
+/*TOP*/
+
+div#home-top {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 50px 0;
+}
+
+div#home-top a {
+    text-decoration: none;
+}
+
+/*
+div#home-top img {
+    width: 300px;
+}
+*/
+
+div.home-item {
+    text-align: center;
+}
+
+div.new-pic {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    background-image: url(images/home-slider/home-new.jpg);
+    background-size: contain;
+}
+
+div.new-pic img,
+div.sale-pic img {
+    width: 65px;
+    height: 65px;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+    z-index: 2;
+}
+
+
+div.sale-pic {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    background-image: url(images/home-slider/home-sales.jpg);
+    background-size: contain;
+}
+
+
+
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+
+    div.quote-text {
+        width: 300px;
+        height: 20px;
+    }
+
+    div.home-item.home-new {
+        margin-bottom: 30px;
+    }
+
+    div.new-pic,
+    div.sale-pic {
+        margin: auto;
+    }
+
+
+}
+
+@media screen and (max-width: 480px) {
+    div.banner-text {
+        display: none;
+    }
+
+    div#home-top {
+        padding: 0;
+    }
+
+
+}

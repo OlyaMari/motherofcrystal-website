@@ -1,0 +1,17 @@
+<div id="collections-page">
+    <div class="blank-block"></div>
+    <h2 id="text">Колекції</h2>
+    <div id="collections">
+        <div ng-repeat="item in collections" class="categ" ng-if="$index > 1">
+
+            <a href="#!products/{{item.id}}">
+           
+            <img ng-src="images/{{item.picture}}">
+             <h4 class="colName">{{item.name}}</h4>
+
+            </a>
+
+        </div>
+
+    </div>
+</div>

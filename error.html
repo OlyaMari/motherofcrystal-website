@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		// version 1.0, 2020-11-16 18:00:00
+		var lowerCaseUrl = location.href.toLowerCase();
+		var dirPath = location.pathname.toLowerCase().replace(/^\//,'').replace(/\/$/,'');
+		
+		function requestLowerCase() {
+			console.log("Try lowercase URL: ", lowerCaseUrl);
+			$.ajax({
+				url: lowerCaseUrl,
+				method: 'HEAD'
+			})
+			.done(redirect)
+			.fail(requestDirList);
+		}
+		
+		function redirect() {
+			var title = 'Redirect';
+			document.title = title;
+			$('h1').text(title);
+			$('a').attr('href', lowerCaseUrl).text(lowerCaseUrl);
+			$('pre').append('<a href="' + lowerCaseUrl + '">' + lowerCaseUrl + '</a>');
+			console.log("Redirect: ", lowerCaseUrl);
+			location.href = lowerCaseUrl;
+		}
+		
+		function requestDirList() {
+			var listUrl = 'http://' + location.hostname + '.s3.amazonaws.com/?delimiter=/&prefix=' + dirPath + '/';
+			console.log("Request list: ", listUrl);
+			$.ajax({
+				url: listUrl
+			})
+			.done(buildDirList)
+			.fail(notFound);
+		}
+		
+		function buildDirList(data) {
+			
+			var $xmlDoc = $(data);
+			var $htmlDoc = $('pre');
+			
+			$('h1').append(location.hostname.toLowerCase(), ' - ', location.pathname.toLowerCase());
+			
+			$htmlDoc.append('<a href="/' + dirPath + '/../">[To Parent Directory]</a><br><br>');
+			
+			var $folders = $xmlDoc.find('CommonPrefixes Prefix');
+			
+			$folders.each(function(index) {
+				var path = $(this).text(),
+					path_arr = path.split('/');
+				$htmlDoc.append(('./').padStart(19, ' '), ('&lt;dir&gt;').padStart(13+6, ' '), ' <a href="/' + path + '">' + path_arr[path_arr.length - 2], '</a><br>');
+			});
+			
+			var $files = $xmlDoc.find('Contents');
+			
+			$files.each(function(index) {
+				var lastModified = $(this).find('LastModified').text(),
+					lastModified_fmt = lastModified.replace('T', ' ').slice(0, lastModified.length - 5),
+					size = $(this).find('Size').text(),
+					path = $(this).find('Key').text(),
+					path_arr = path.split('/');
+				if (path_arr[path_arr.length - 1].length > 0) {
+					$htmlDoc.append(lastModified_fmt + size.padStart(13) + ' <a href="/' + path + '">' + path_arr[path_arr.length - 1], '</a><br>');
+				}
+			});
+		}
+		function notFound() {
+			var title = '404 Not Found';
+			$(document).prop('title', title);
+			$('h1').text(title);
+			$('pre').append('<a href="/">' + $(location).prop('host') + '</a>');
+		}
+		
+		$(document).ready(function() {
+			if ((/\/$/).test(location.pathname) || location.href == lowerCaseUrl) {
+				requestDirList();
+			} else {
+				requestLowerCase();
+			}
+		});
+		
+	</script>
+</head>
+
+<body>
+
+<h1></h1>
+
+<hr>
+<pre></pre>
+<hr>
+
+</body>
+
+</html>

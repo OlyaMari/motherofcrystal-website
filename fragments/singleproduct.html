@@ -1,0 +1,126 @@
+<div class="blank-block"></div>
+<div id="collections-page">
+
+    <div id="slider"></div>
+
+    <div class="bread-crumbs"><small>&lt;&lt;</small>
+        <a href="#!products/{{prodCollection.id}}">{{prodCollection.name}}
+        </a>
+        <span ng-show="singleproduct.new || singleproduct.sale">&nbsp;|&nbsp;</span>
+        <a ng-show="singleproduct.new" href="#!products/101"> Нові</a>
+        <span ng-show="singleproduct.new && singleproduct.sale">&nbsp;|&nbsp;</span>
+        <a ng-show="singleproduct.sale" href="#!products/102"> Знижки</a>
+
+    </div>
+
+
+    <div id="main-content">
+        <!--       PRODUCT-IMG-->
+        <div id="prod-img">
+            <img ng-src="images/products-img/{{largePic}}" alt="">
+            <div class="altviews">
+                <div ng-repeat="item in singleproduct.detailPics" class="inner" ng-click="changePic(item)"><img
+                        ng-src="images/products-img/{{item}}" alt=""></div>
+
+            </div>
+        </div>
+
+
+        <!--       PRODUCT-INFO-->
+        <div id="prod-info">
+            <p class="list-title">{{singleproduct.name}}</p>
+
+            <p class="list-price">{{singleproduct.price}}</p>
+
+            <ul class="desc-features" ng-show="hasCharacteristic">
+                <li>{{characteristicName}}</li>
+                <li>
+                    <select ng-model="selectedCharacteristic"
+                        ng-options="x for x in singleproduct.characteristic.values"></select>
+                </li>
+            </ul>
+            <!--            <a href="">Size guide</a>-->
+            <div class="shopping-box">
+                <button type="submit" ng-click="openModal()" class="btn-basket">
+                    <span>Замовити</span>
+                </button>
+            </div>
+
+            <p style="text-align: justify;" class="belowlist">{{singleproduct.detailDesc}}</p>
+            <p style="text-align: justify;" class="belowlist">{{singleproduct.additionalDesc}}</p>
+
+
+            <!--        PRODUCT-DESC-->
+            <div class="description">
+                <ul>
+                    <li>Вироби доступні в обмеженій кількості.</li>
+                    <li>Кожну прикрасу упаковуємо у фірмову коробочку.</li>
+                    <li>Камені можуть відрізнятися за розміром та відтінком, бо кожна одиниця – природний елемент; кожен
+                        браслет є унікальною прикрасою, виготовленою вручну (окремі екземпляри повторити неможливо).
+                    </li>
+                </ul>
+
+
+
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal" ng-show="myModal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span ng-click="closeModal()" class="close">&times;</span>
+                        <div class="orderInModal">
+                            <div class="modal-order">
+                                <p>Ваше замовлення:</p>
+                                <p>{{singleproduct.name}}</p>
+                                <p>{{singleproduct.price}}</p>
+                                <p ng-hide="selectedCharacteristic == ''">{{characteristicName}}
+                                    {{selectedCharacteristic}}</p>
+                            </div>
+                            <img ng-src="images/products-img/{{largePic}}">
+                        </div>
+                        <p>Введіть своє ім'я та номер телефону, щоб ми змогли зв'язатися якнайшвидше!</p>
+                        <form name="custForm" novalidate ng-submit="submitForm(this)">
+
+                            <label>Ваше ім'я <span class="errorField" ng-hide='custName_validFlag'>- Введіть
+                                    ім'я</span></label>
+                            <input type="text" name="custName" ng-model="custName" required>
+
+                            <label>Номер телефону <span class="errorField" ng-hide='custPhone_validFlag'>- Введіть номер
+                                    телефону</span></label>
+                            <input name="custPhone" ng-model="custPhone" required>
+
+                            <button type="submit" class="btn-basket">Підтвердити</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <div class="icon"></div>
+    <p class="recom">Доповни образ</p>
+    <!--       RECOMMENDED-->
+    <div class="prod-wrapper">
+
+        <div class="col" ng-repeat="item in products | filter:isRelated()">
+            <a href="#!singleproduct/{{item.id}}">
+                <div class="img-container"><img ng-src="images/products-img/{{item.listingPic}}" alt=""></div>
+                <div class="text-container">
+                    <p>{{item.name}}</p>
+                    <p>{{item.price}}</p>
+
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+
+</div>

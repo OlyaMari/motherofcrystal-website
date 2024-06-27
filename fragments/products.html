@@ -1,0 +1,33 @@
+<div class="blank-block"></div>
+<div id="collections-page">
+    <div id="slider"></div>
+    <div class="bread-crumbs">
+        <small> <a href="#!shop">  &lt;&lt;  </a> </small>
+    </div>
+    <!--    {{selectedCollection.name}}-->
+    <div class="sidebar">
+        <ul>
+            <li ng-class="item.id == selectedCollection.id ? 'selected' : '' " ng-repeat="item in collections"><a href="#!products/{{item.id}}">{{item.name}}</a></li>
+        </ul>
+    </div>
+    <div id="wrap">
+
+        <div ng-repeat="item in products | filter: filterProducts" class="item">
+            <div class="new"><img ng-show="item.new" src="images/new-sticker.png" alt=""> <img ng-show="item.sale" src="images/sale-sticker.png" alt=""></div>
+            <a href="#!singleproduct/{{item.id}}"><img ng-src="images/products-img/{{item.listingPic}}">
+           
+            <div class="overlay">
+                <div class="text">Lorem ipsum!</div>
+            </div>
+            <p class="prod-title">{{item.name}}</p>
+            <p class="prod-price">{{item.price}}</p>
+            </a>
+        </div>
+
+
+
+
+    </div>
+
+
+</div>

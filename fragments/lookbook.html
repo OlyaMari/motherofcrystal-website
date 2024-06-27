@@ -1,0 +1,47 @@
+<div class="blank-block"></div>
+<div class="container slider">
+    <img ng-repeat="slide in slides" class="slide slide-animation nonDraggableImage" ng-swipe-left="nextSlide()" ng-swipe-right="prevSlide()" ng-hide="!isCurrentSlideIndex($index)" ng-src="{{getSlideImage($index)}}">
+
+
+    <img class="emptySlide" ng-src="images/home-slider/empty-{{orientation}}.png">
+
+    <a class="arrow prev" href="" ng-click="prevSlide()"></a>
+    <a class="arrow next" href="" ng-click="nextSlide()"></a>
+    <nav class="nav">
+        <div class="wrapper">
+            <ul class="dots">
+                <li class="dot" ng-repeat="slide in slides">
+                    <a href="" ng-class="{'active':isCurrentSlideIndex($index)}" ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="row">
+    <div class="column">
+        <h2>Feel unique</h2>
+        <h4>Wearing Jewelry is a way to express the woman you are, without saying a word</h4><img src="images/lookbook/longring-moon.jpg" alt=""></div>
+    <div class="column"><img src="images/lookbook/aqua&labrador.jpg" alt="">
+        <p>Obsessed with nature</p>
+    </div>
+</div>
+
+<div id="cont"><img src="images/lookbook/horizontal.jpg" alt=""></div>
+
+
+<div class="row">
+    <div class="column"><img src="images/lookbook/rings.jpg" alt=""></div>
+    <div class="column">
+        <img src="images/lookbook/ring-moon.jpg" alt=""></div>
+</div>
+
+<div id="cont2"><img src="images/lookbook/horizontal-rings.jpg" alt=""></div>
+
+
+<div class="row2">
+    <div class="column1"><img src="images/lookbook/hrobik-ring.jpg" alt=""></div>
+    <div class="column2"><h3>Harmony with nature</h3>
+     <p>Місячний камінь... Про нього можна говорити безкінечно. Це талісман самодостатніх людей, з міцною волею і незалежним характером. Він врівноважує вибуховий темперамент, пробуджує мрійливість, ніжність, допомагає досягти гармонії. Його вважають символом кохання, помічником у творчості, розвитку інтуїції та самовираженні. Місячний камінь допоможе жінці налагодити зв'язок з собою. Навчить прислухатися до тіла, організму, потреб душі і серця. Зовсім недарма у багатьох народів місячний камінь досі ціниться на рівні діамантів...</p>
+    
+    </div>
+</div>

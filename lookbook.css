@@ -1,0 +1,261 @@
+.slider {
+    width: 100%;
+    /*    height: 400px;*/
+    overflow: hidden;
+    position: relative;
+
+}
+
+.slide {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+
+.emptySlide {
+    width: 100%;
+    z-index: 0;
+}
+
+.slide.hide {
+    display: none;
+}
+
+.slide.show {
+    display: block;
+}
+
+.arrow {
+    position: absolute;
+    z-index: 1002;
+    display: block;
+    top: 50%;
+    margin-top: -35px;
+    width: 36px;
+    height: 71px;
+    outline: none;
+    cursor: pointer;
+    background: url(css/blank.gif) no-repeat;
+}
+
+.arrow.prev {
+    opacity: 0.2;
+    left: 20px;
+    background-image: url(css/paddle_prev_999.png);
+    transition: 0.2s linear all;
+}
+
+.arrow.next {
+    opacity: 0.2;
+    right: 20px;
+    background-image: url(css/paddle_next_999.png);
+    transition: 0.2s linear all;
+}
+
+.arrow.prev:hover {
+    opacity: 1;
+    background-image: url(css/paddle_prev_fff.png);
+}
+
+.arrow.next:hover {
+    opacity: 1;
+    background-image: url(css/paddle_next_fff.png);
+}
+
+
+
+/*---------------------------------------------------------
+NAV
+---------------------------------------------------------*/
+
+.nav {
+    text-align: center;
+    display: block;
+    position: absolute;
+    z-index: 1002;
+    left: 0;
+    bottom: -4px;
+    right: 0;
+    height: 48px;
+}
+
+.nonDraggableImage {
+    -webkit-user-drag: none;
+}
+
+.nav .wrapper {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.nav ul {
+    margin: 0;
+    width: 100%;
+}
+
+.nav .dot,
+.nav .dot a {
+    display: inline-block;
+    zoom: 1;
+}
+
+.dots .dot {
+    position: relative;
+    margin: 0 8px;
+    width: 12px;
+    height: 12px;
+}
+
+.dots .dot a {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 6px;
+    height: 6px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    background: #FFF;
+    border: 1px solid transparent;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: background-color 0.25s, border-color 0.25s;
+    -moz-transition: background-color 0.25s, border-color 0.25s;
+    transition: background-color 0.25s, border-color 0.25s;
+}
+
+.dots .dot a.active {
+    border-color: #FFF;
+    background-color: transparent;
+}
+
+section {
+    margin-bottom: 15%;
+}
+
+.row {
+    width: 100%;
+    margin: 100px 0;
+    justify-content: center;
+    display: flex;
+}
+
+div.column {
+    width: 35%;
+    margin: 0 3%;
+    text-align: center;
+}
+
+div.column > img {
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+div.column p, div.column > h4 {
+    font-family: myCursive;
+    font-weight: 500;
+    font-size: 30px;
+    padding: 4%;
+    margin: auto;
+    
+}
+
+div.column > h2,
+div.column2 > h3 {
+    font-size: 26px;
+    text-transform: uppercase;
+}
+
+div#cont img,
+div#cont2 img,
+div.column1 img {
+    width: 100%;
+}
+
+div#cont2 {
+    margin: 50px 12%;
+}
+
+div.row2 {
+    margin: 100px auto;
+    justify-content: center;
+    display: flex;
+}
+
+div.column1,
+div.column2 {
+    width: 38%;
+}
+
+div.column2 {
+    padding: 6%;
+}
+
+div.column2 p {
+    text-align: justify;
+}
+
+@media screen and (max-width: 1060px) {
+    div.row2 {
+        display: block;
+    }
+    div.column1, div.column2 {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    
+    div.column2 > h3 {
+        font-size: 24px;
+    } 
+    
+}
+
+@media screen and (max-width: 768px) {
+    
+    .row {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    div.row2 {
+        margin-top: 50px;
+        display: block;
+    }
+    
+    div.column1, div.column2 {
+        width: 76%;
+        margin: auto 12%;
+        text-align: center;
+    }
+    
+    div.column p {
+        font-size: 22px;
+        line-height: 0.9;
+    }
+    
+    div.column > h2 {
+        font-size: 24px;
+    }
+
+    div.column2 {
+        padding: 2%;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    div.column > h4 {
+        font-size: 22px;
+        line-height: 0.9;
+    }
+}

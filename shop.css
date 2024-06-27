@@ -1,0 +1,64 @@
+#collections-page {
+    margin: auto;
+    padding: 0 3%;
+    height: 100%;
+    min-height: 960px;
+}
+
+h2#text {
+    font-size: 2em;
+    text-align: center;
+}
+
+
+div#slider img {
+    width: 100%;
+}
+
+div#collections {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 5%;
+    padding: 10px;
+    padding-bottom: 50px;
+}
+
+div.categ img {
+    width: 100%;
+
+}
+
+div.categ a {
+    text-decoration: none;
+}
+
+h4.colName {
+    margin-top: 5px;
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+    div#collections {
+        grid-template-columns: 40% 40%;
+        justify-content: center;
+    }
+
+
+
+    @media screen and (max-width: 480px) {
+        div#collections {
+            display: block;
+        }
+
+        div.categ {
+            margin-bottom: 15px;
+        }
+
+        div#slider {
+            display: none;
+        }
+    }
